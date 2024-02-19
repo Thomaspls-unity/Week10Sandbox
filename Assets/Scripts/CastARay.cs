@@ -33,7 +33,7 @@ public class CastARay : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, rayDistance, spawnLayer))
         {
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.E)) //INPUT
             {
                 Instantiate(objectToSpawn, hit.point, Quaternion.identity);
             }
@@ -46,7 +46,7 @@ public class CastARay : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, rayDistance, colorLayer))
         {
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.E)) //INPUT
             {
                 hit.transform.GetComponent<MeshRenderer>().material.color = Random.ColorHSV();
             }
