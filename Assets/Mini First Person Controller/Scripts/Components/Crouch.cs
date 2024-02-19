@@ -36,7 +36,7 @@ public class Crouch : MonoBehaviour
 
     void LateUpdate()
     {
-        if (Input.GetKey(key))
+        if (Input.GetKey(key)) //INPUT
         {
             // Enforce a low head.
             if (headToLower)

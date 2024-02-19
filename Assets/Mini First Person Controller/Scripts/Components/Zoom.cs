@@ -24,7 +24,7 @@ public class Zoom : MonoBehaviour
     void Update()
     {
         // Update the currentZoom and the camera's fieldOfView.
-        currentZoom += Input.mouseScrollDelta.y * sensitivity * .05f;
+        currentZoom += Input.mouseScrollDelta.y * sensitivity * .05f; //INPUT
         currentZoom = Mathf.Clamp01(currentZoom);
         camera.fieldOfView = Mathf.Lerp(defaultFOV, maxZoomFOV, currentZoom);
     }
