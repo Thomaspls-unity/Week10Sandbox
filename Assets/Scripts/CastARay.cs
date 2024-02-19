@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.UI;
 
 public class CastARay : MonoBehaviour
 {
@@ -14,11 +15,14 @@ public class CastARay : MonoBehaviour
 
     [SerializeField] private GameObject objectToSpawn;
 
+    public Button shootButton;
+    private bool shootPressed = false;
+
     private RaycastHit hit;
     // Start is called before the first frame update
     void Start()
     {
-        
+        shootButton.onClick.AddListener(ShootPressed);
     }
 
     // Update is called once per frame
@@ -27,18 +31,36 @@ public class CastARay : MonoBehaviour
         SpawnGuy();
     }
 
+    public void ShootPressed()
+    {
+        shootPressed = true;
+    }
+
     private void SpawnGuy()
     {
         Ray ray = cam.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
 
         if (Physics.Raycast(ray, out hit, rayDistance, spawnLayer))
         {
-            if (Input.GetKeyDown(KeyCode.E)) //INPUT
+            if (shootPressed == true)
             {
                 Instantiate(objectToSpawn, hit.point, Quaternion.identity);
             }
         }
     }
+
+    //private void SpawnGuy()
+    //{
+    //    Ray ray = cam.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
+
+    //    if (Physics.Raycast(ray, out hit, rayDistance, spawnLayer))
+    //    {
+    //        if (Input.GetKeyDown(KeyCode.E)) //INPUT
+    //        {
+    //            Instantiate(objectToSpawn, hit.point, Quaternion.identity);
+    //        }
+    //    }
+    //}
 
     private void RandomColor()
     {
